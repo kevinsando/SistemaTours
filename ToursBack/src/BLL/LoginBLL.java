@@ -1,10 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package BLL;
+
+import DAL.User;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -12,4 +11,21 @@ package BLL;
  */
 public class LoginBLL {
 
+    public LoginBLL() {
+        
+    }
+    
+    public User signIn(String email, String pass){
+        return DAL.LoginDAL.obtenerInstancia().obtenerUsuario(email, pass);
+    }
+    
+    public void logIn(User u){
+        try {
+            DAL.LoginDAL.obtenerInstancia().saveUser(u);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginBLL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    
 }
