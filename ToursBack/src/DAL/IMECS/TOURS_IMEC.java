@@ -5,7 +5,8 @@ package DAL.IMECS;
  * @author Kevin
  */
 public enum TOURS_IMEC {
-    RETURN_USER("SELECT id,usuario,password,nombre,apellidos,direccion,rol,telefono FROM usuario WHERE usuario=? and password=?;");
+    LISTAR_TOURS("SELECT id,name,description,duration,price,destination,dateGone,dateReturn,qualification "
+            + "FROM tours ORDER BY name;");
     
     
     

@@ -23,7 +23,8 @@ public class ToursBLL {
     }
     
     public List<DAL.Tour> getDestinos(){
-        return DAL.ToursDAL.getDestinos();
+        System.out.println("En BLL");
+        return DAL.ToursDAL.allTours();
     }
     
     private static ToursBLL instancia = null;

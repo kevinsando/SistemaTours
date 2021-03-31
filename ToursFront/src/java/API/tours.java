@@ -36,10 +36,10 @@ public class tours {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Tour> getMasVendidos() {
         try {
-            System.out.println("Mostrando más vendidos");
+            System.out.println("Mostrando tours");
             return ToursBLL.obtenerInstancia().getDestinos();
         } catch (Exception ex) {
-            System.out.println("error al mostrar más vendidos");
+            System.out.println("error al tours");
             DAL.exceptions.ExceptionsManager.SHOW_ERROR(ex.getMessage());
         }
         return ToursBLL.obtenerInstancia().getDestinos();

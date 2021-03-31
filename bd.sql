@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `toursBD`.`users` (
   `password` VARCHAR(45) NOT NULL,
   `name` VARCHAR(16) NOT NULL,
   `lastName` VARCHAR(40) NOT NULL,
-  `home` VARCHAR(40) NOT NULL,
+  `address` VARCHAR(40) NOT NULL,
   `rol` INT NOT NULL DEFAULT 0,
   -- 1 para usuario, 0 para admin
   
@@ -27,16 +27,18 @@ CREATE TABLE IF NOT EXISTS `toursBD`.`tours` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(16) NOT NULL,
   `description` VARCHAR(300) NOT NULL,
-  `time` DOUBLE NOT NULL,
+  `duration` DOUBLE NOT NULL,
   `price` DOUBLE NOT NULL,
   `destination` VARCHAR(16) NOT NULL,
   `dateGone` DATE NOT NULL,
   `dateReturn` DATE NOT NULL,
-  `Globalqualification` DOUBLE NOT NULL,
+  `qualification` DOUBLE NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-
+insert into tours (id, name, description, duration, price, destination, dateGone, dateReturn, qualification)
+ values (0,'Tour a Naranjo','gran tour a naranjo, podrá ver vacas y cafetales',24,15000,'Naranjo','2021-04-20','2021-04-20',5);
+select * from tours;
 CREATE TABLE IF NOT EXISTS `toursBD`.`qualifications` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_email` VARCHAR(16) NOT NULL,

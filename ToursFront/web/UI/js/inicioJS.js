@@ -7,7 +7,7 @@ function init(){
 function listar(){
     $.ajax({
         type: "GET",
-        url: "/ToursFront/API/tours/disponibles",
+        url: "/ToursFront/api/tours/disponibles",
         contentType: "application/json"
     }).then((list) => {
         construirMenu(list);
@@ -29,7 +29,7 @@ function construirMenu(datos){
                 function (elemento, i, arreglo) {
                     var opcion = document.createElement("option");
                     opcion.setAttribute("value", String(i + 1));
-                    opcion.appendChild(document.createTextNode(elemento));
+                    opcion.appendChild(document.createTextNode(elemento.destination));
                     refMenu.appendChild(opcion);
                 }
         );
