@@ -1,6 +1,9 @@
 package BLL;
 
-import DAL.LoginDAL;
+
+import DAL.Tour;
+import DAL.ToursDAL;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,19 +16,18 @@ public class ToursBLL {
     private ToursBLL() {
     }
     
-    
-
-    public static ToursBLL obtenerInstancia() {
-        if (instancia == null) {
-            instancia = new ToursBLL();
+    public static ToursBLL getInstance() {
+        if (instance == null) {
+            instance = new ToursBLL();
         }
-        return instancia;
+        return instance;
     }
-    
+
     public List<DAL.Tour> getDestinos(){
         System.out.println("En BLL");
-        return DAL.ToursDAL.allTours();
+        return ToursDAL.getInstance().allTours();
     }
     
-    private static ToursBLL instancia = null;
+    private static ToursBLL instance = null;
+
 }

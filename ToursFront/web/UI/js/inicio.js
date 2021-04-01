@@ -16,7 +16,7 @@ function listar(){
 
 function construirMenu(datos){
     var refMenu = document.getElementById('SelectLugares');
-
+    console.log("contruyendo combo...")
     if (refMenu) {
         refMenu.options.length = 0;
         {
@@ -29,7 +29,7 @@ function construirMenu(datos){
                 function (elemento, i, arreglo) {
                     var opcion = document.createElement("option");
                     opcion.setAttribute("value", String(i + 1));
-                    opcion.appendChild(document.createTextNode(elemento.destination));
+                    opcion.appendChild(document.createTextNode(elemento.name));
                     refMenu.appendChild(opcion);
                 }
         );

@@ -3,12 +3,12 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 SET GLOBAL time_zone = '-6:00';
 
--- DROP SCHEMA IF EXISTS `toursBD` ;
+/*DROP SCHEMA IF EXISTS `toursBD` ;*/
 
 CREATE SCHEMA IF NOT EXISTS `toursBD` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci ;
 USE `toursBD` ;
 
-DROP TABLE IF EXISTS `toursBD`.`users` ;
+/*DROP TABLE IF EXISTS `toursBD`.`users` ;*/
 
 CREATE TABLE IF NOT EXISTS `toursBD`.`users` (
   `email` VARCHAR(25) NOT NULL,
@@ -30,8 +30,8 @@ CREATE TABLE IF NOT EXISTS `toursBD`.`tours` (
   `duration` DOUBLE NOT NULL,
   `price` DOUBLE NOT NULL,
   `destination` VARCHAR(16) NOT NULL,
-  `dateGone` DATE NOT NULL,
-  `dateReturn` DATE NOT NULL,
+  `dateGone` VARCHAR(16) NOT NULL,
+  `dateReturn` VARCHAR(16) NOT NULL,
   `qualification` DOUBLE NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;

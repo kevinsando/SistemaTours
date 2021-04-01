@@ -1,17 +1,19 @@
 package DAL;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
  *
  * @author Kevin Sandoval
  */
-public class Tour {
+public class Tour implements Serializable{
 
     public Tour() {
     }
 
-    public Tour(Integer id, String name, String description, Double duration, Double price, String destination, Date dateGone, Date dateReturn, Double qualification) {
+
+    public Tour(int id, String name, String description, double duration, double price, String destination, String dateGone, String dateReturn, double qualification) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -23,7 +25,7 @@ public class Tour {
         this.qualification = qualification;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
@@ -35,11 +37,11 @@ public class Tour {
         return description;
     }
 
-    public Double getDuration() {
+    public double getDuration() {
         return duration;
     }
 
-    public Double getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -47,59 +49,24 @@ public class Tour {
         return destination;
     }
 
-    public Date getDateGone() {
+    public String getDateGone() {
         return dateGone;
     }
 
-    public Date getDateReturn() {
+    public String getDateReturn() {
         return dateReturn;
     }
 
-    public Double getQualification() {
+    public double getQualification() {
         return qualification;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setDuration(Double duration) {
-        this.duration = duration;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
-    }
-
-    public void setDateGone(Date dateGone) {
-        this.dateGone = dateGone;
-    }
-
-    public void setDateReturn(Date dateReturn) {
-        this.dateReturn = dateReturn;
-    }
-
-    public void setQualification(Double qualification) {
-        this.qualification = qualification;
     }
 
     @Override
     public String toString() {
         return "Tour{" + "id=" + id + ", name=" + name + ", description=" + description + ", duration=" + duration + ", price=" + price + ", destination=" + destination + ", dateGone=" + dateGone + ", dateReturn=" + dateReturn + ", qualification=" + qualification + '}';
     }
-
+    
+    
     
     private Integer id;
     private String name;
@@ -107,7 +74,7 @@ public class Tour {
     private Double duration;
     private Double price;
     private String destination;
-    private Date dateGone;
-    private Date dateReturn;
+    private String dateGone;
+    private String dateReturn;
     private Double qualification;
 }

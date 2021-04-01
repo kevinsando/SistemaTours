@@ -5,8 +5,7 @@ package DAL.IMECS;
  * @author Kevin
  */
 public enum TOURS_IMEC {
-    LISTAR_TOURS("SELECT id,name,description,duration,price,destination,dateGone,dateReturn,qualification "
-            + "FROM tours ORDER BY name;");
+    LISTAR_TOURS("SELECT id,name,description,duration,price,destination,dateGone,dateReturn,qualification FROM tours;");
     
     
     
