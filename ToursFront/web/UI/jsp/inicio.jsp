@@ -48,16 +48,17 @@
                     <thead class="thead-dark">
                         <tr>
                             <th class="justify-content-center">
+                                <label for="ida" class="mr-sm-2" style="display: inline-block"> Destino: </label>
                                 <select id="SelectLugares" class="mb-2 mr-sm-2" onchange="mostrarOpcion();">                              
                                 </select>
                             </th>
                             <th>
-                                <input type="text" id = "ida" placeholder="Ida" onfocus="(this.type = 'date')">
+                                <label for="ida" class="mr-sm-2" style="display: inline-block"> Llegada: </label>
+                                <input type="date" id="ida" class="form-control" placeholder="Ida">
                             </th>
                             <th>
-                                <input type="text" id = "vuelta" placeholder="Ida" onfocus="(this.type = 'date')">
-
-                                
+                                <label for="vuelta" class="mr-sm-2" style="display: inline-block">Salida: </label>
+                                <input type="date" id="vuelta" class="form-control" placeholder="Ida">         
                             </th>
                             <th>
                                 <button type="submit" class="btn btn-success"> Buscar </button>

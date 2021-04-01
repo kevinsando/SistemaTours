@@ -15,9 +15,9 @@
                     <li class="nav-item">
                         <a class="navbar-brand" href="#">
                             <img src="../img/logo.png" alt="Logo" style="width:30px;">
-                        </a>
-                        
+                        </a>                   
                     </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="inicio.jsp">Inicio</a>
                     </li>
@@ -29,14 +29,19 @@
                         <div class="dropdown-menu" id="ParetoVentas">
                             <div id="divReports" runat="server">
                                 <ul class="nav nav-collapse">
-                                    <a class="dropdown-item" href="../ventas/mas-vendidos.jsp">Productos más vendidos</a> 
+                                    <a class="dropdown-item" href="prueba.jsp">Productos más vendidos</a> 
                                     <a class="dropdown-item" href="../ventas/menos-vendidos.jsp">Productos menos vendidos</a>
                                     <a class="dropdown-item" href="../ventas/vendidos-mes.jsp">Reporte ventas del mes</a> 
                                 </ul>
                             </div>
                         </div>
                     </li>
-
+                </ul>
+                
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.jsp">Iniciar Sesion</a>
+                    </li>
                 </ul>
             </nav>
         </div>
