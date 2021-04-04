@@ -13,7 +13,8 @@ public class Tour implements Serializable{
     }
 
 
-    public Tour(int id, String name, String description, double duration, double price, String destination, String dateGone, String dateReturn, double qualification) {
+    public Tour(Integer id, String name, String description, Double duration, 
+            Double price, String destination, String dateGone, String dateReturn, Double qualification) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -25,7 +26,7 @@ public class Tour implements Serializable{
         this.qualification = qualification;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -37,11 +38,11 @@ public class Tour implements Serializable{
         return description;
     }
 
-    public double getDuration() {
+    public Double getDuration() {
         return duration;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
@@ -57,7 +58,7 @@ public class Tour implements Serializable{
         return dateReturn;
     }
 
-    public double getQualification() {
+    public Double getQualification() {
         return qualification;
     }
 

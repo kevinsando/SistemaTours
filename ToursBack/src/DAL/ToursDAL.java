@@ -9,6 +9,7 @@ package DAL;
 import BLL.ToursBLL;
 import DAL.IMECS.TOURS_IMEC;
 import DAL.data.BaseDatos;
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -21,11 +22,10 @@ import java.util.List;
  *
  * @author Kevin Sandoval
  */
-public class ToursDAL {
+public class ToursDAL implements Serializable{
 
     
     private ToursDAL() {
-        ToursDAL.bd = BaseDatos.obtenerInstancia();
     }
     
     public static ToursDAL getInstance() {
@@ -39,6 +39,7 @@ public class ToursDAL {
     //Red All
     public List<Tour> allTours() {
         System.out.println("En DAL");
+        ToursDAL.bd = BaseDatos.obtenerInstancia();
         List<Tour> r = new ArrayList<>();
         try (Connection cnx = bd.obtenerConexion();
                 Statement stm = cnx.createStatement();

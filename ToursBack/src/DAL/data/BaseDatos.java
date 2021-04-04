@@ -2,49 +2,62 @@ package DAL.data;
 
 import cr.ac.database.managers.DBManager;
 import java.io.IOException;
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class BaseDatos {
+public class BaseDatos implements Serializable {
 
 
     // <editor-fold defaultstate="collapsed" desc="constructores">
-    private BaseDatos()
-            throws ClassNotFoundException,
-            IllegalAccessException,
-            InstantiationException,
-            IOException {
+    private BaseDatos(){
+        System.out.println("Constructor bd");
         configuracion = new Properties();
         try {
+            System.out.println("0");
             configuracion.load(getClass().getResourceAsStream(ARCHIVO_CONFIGURACION));
             try {
+                System.out.println("1");
                 bd = DBManager.getDBManager(DBManager.DB_MGR.MYSQL_SERVER,
                         configuracion.getProperty("server_url"));
-            } catch (IOException
-                    | ClassNotFoundException
-                    | IllegalAccessException
-                    | InstantiationException ex) {
-                System.err.println("No se pudo cargar el manejador de la base de datos..");
-                System.err.printf("Excepción: '%s'%n", ex.getMessage());
-                throw ex;
+                System.out.println("1.1");
+            } catch (IOException | ClassNotFoundException | IllegalAccessException | InstantiationException ex) {
+                try {
+                    System.out.println("2");
+                    System.err.println("No se pudo cargar el manejador de la base de datos..");
+                    System.err.printf("Excepción: '%s'%n", ex.getMessage());
+                    throw ex;
+                } catch (ClassNotFoundException ex1) {
+                    System.out.println("Error 1");
+                    Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex1);
+                    System.out.println("Error 2");
+                } catch (IllegalAccessException ex1) {
+                    System.out.println("Error 3");
+                    Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex1);
+                } catch (InstantiationException ex1) {
+                    System.out.println("Error 4");
+                    Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex1);
+                }
             }
         } catch (IOException ex) {
-            System.err.println("No se pudo leer el archivo de configuración..");
-            throw ex;
+            try {
+                System.out.println("4");
+                System.err.println("No se pudo leer el archivo de configuración..");
+                throw ex;
+            } catch (IOException ex1) {
+                Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex1);
+            }
         }
+        System.out.println("FIN");
     }
 
     public static BaseDatos obtenerInstancia() {
+        System.out.println("En BD");
         if (instancia == null) {
-            try {
-                instancia = new BaseDatos();
-            } catch (IOException
-                    | ClassNotFoundException
-                    | IllegalAccessException
-                    | InstantiationException ex) {
-                System.err.printf("Excepción: '%s'%n", ex.getMessage());
-            }
+            instancia = new BaseDatos();
         }
         return instancia;
     }
