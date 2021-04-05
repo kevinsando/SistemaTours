@@ -6,6 +6,8 @@ import DAL.ToursDAL;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,7 +20,6 @@ public class ToursBLL implements Serializable{
     }
     
     public static ToursBLL getInstance() {
-        tours = ToursDAL.getInstance().allTours();
         System.out.println("Tours cargados");
         if (instance == null) {
             instance = new ToursBLL();
@@ -27,10 +28,15 @@ public class ToursBLL implements Serializable{
     }
 
     public List<Tour> getDestinos(){
-        System.out.println("En BLL");
-        return tours;
+        try {
+            System.out.println("En BLL");
+            return dal.allTours();
+        } catch (Exception ex) {
+            Logger.getLogger(ToursBLL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
     private static ToursBLL instance = null;
-    private static List<Tour> tours;
+    ToursDAL dal = new ToursDAL();
 }

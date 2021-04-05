@@ -8,7 +8,6 @@ package DAL;
 
 import BLL.ToursBLL;
 import DAL.IMECS.TOURS_IMEC;
-import DAL.data.BaseDatos;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.Date;
@@ -22,50 +21,41 @@ import java.util.List;
  *
  * @author Kevin Sandoval
  */
-public class ToursDAL implements Serializable{
+public class ToursDAL {
 
     
-    private ToursDAL() {
+    public ToursDAL() {
+        db = new RelDatabase();
     }
     
-    public static ToursDAL getInstance() {
-        if (instance == null) {
-            instance = new ToursDAL();
-        }
-        return instance;
-    }
-
-    
-    //Red All
-    public List<Tour> allTours() {
-        System.out.println("En DAL");
-        ToursDAL.bd = BaseDatos.obtenerInstancia();
-        List<Tour> r = new ArrayList<>();
-        try (Connection cnx = bd.obtenerConexion();
-                Statement stm = cnx.createStatement();
-                ResultSet rs = stm.executeQuery(TOURS_IMEC.LISTAR_TOURS.obtain())) {
+    public List<Tour> allTours() throws Exception {
+        List<Tour> result = new ArrayList<>();
+        try {
+            String sql = " select * from tours;";
+            ResultSet rs = db.executeQuery(sql);
             while (rs.next()) {
-                Tour t = new Tour(
-                        rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getString("description"),
-                        rs.getDouble("duration"),
-                        rs.getDouble("price"),
-                        rs.getString("destination"),
-                        rs.getString("dateGone"),
-                        rs.getString("dateReturn"),
-                        rs.getDouble("qualification")
-                );
-                r.add(t);
+                result.add(tour(rs));
             }
         } catch (SQLException ex) {
-            System.err.printf("Excepción en DAL: '%s'%n", ex.getMessage());
-        } finally {
-            bd.cerrarConexion();
+            System.out.println(ex);
         }
-        return r;
+        return result;
     }
-    private static BaseDatos bd = null;
-    private static ToursDAL instance = null;
-
+    
+    public Tour tour (ResultSet rs) throws SQLException, Exception {
+        Tour t = new Tour();
+        t.setId(rs.getInt("id"));
+        t.setName(rs.getString("name"));
+        t.setDescription(rs.getString("description"));
+        t.setDuration(rs.getDouble("duration"));
+        t.setPrice(rs.getDouble("price"));
+        t.setDestination(rs.getString("destination"));
+        t.setDateGone(rs.getString("dateGone"));
+        t.setDateReturn(rs.getString("dateReturn"));
+        t.setQualification(rs.getDouble("qualification"));
+        return t;
+    }
+    
+    
+    private RelDatabase db;
 }

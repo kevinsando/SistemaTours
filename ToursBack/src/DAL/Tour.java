@@ -66,6 +66,42 @@ public class Tour implements Serializable{
     public String toString() {
         return "Tour{" + "id=" + id + ", name=" + name + ", description=" + description + ", duration=" + duration + ", price=" + price + ", destination=" + destination + ", dateGone=" + dateGone + ", dateReturn=" + dateReturn + ", qualification=" + qualification + '}';
     }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setDuration(Double duration) {
+        this.duration = duration;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public void setDateGone(String dateGone) {
+        this.dateGone = dateGone;
+    }
+
+    public void setDateReturn(String dateReturn) {
+        this.dateReturn = dateReturn;
+    }
+
+    public void setQualification(Double qualification) {
+        this.qualification = qualification;
+    }
     
     
     
