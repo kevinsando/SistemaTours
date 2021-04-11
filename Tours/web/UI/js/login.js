@@ -1,0 +1,2 @@
+import Swup from 'swup';
+

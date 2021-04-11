@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `toursBD`.`users` (
   PRIMARY KEY (`email`))
 ENGINE = InnoDB;
 
-
+/*DROP TABLE IF EXISTS `toursBD`.`tours` ;*/
 CREATE TABLE IF NOT EXISTS `toursBD`.`tours` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(16) NOT NULL,
@@ -30,15 +30,17 @@ CREATE TABLE IF NOT EXISTS `toursBD`.`tours` (
   `duration` DOUBLE NOT NULL,
   `price` DOUBLE NOT NULL,
   `destination` VARCHAR(16) NOT NULL,
-  `dateGone` VARCHAR(16) NOT NULL,
-  `dateReturn` VARCHAR(16) NOT NULL,
+  `dateGone` DATE NOT NULL,
+  `dateReturn` DATE NOT NULL,
   `qualification` DOUBLE NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-insert into tours (id, name, description, duration, price, destination, dateGone, dateReturn, qualification)
+/*insert into tours (id, name, description, duration, price, destination, dateGone, dateReturn, qualification)
  values (0,'Tour a Naranjo','gran tour a naranjo, podrá ver vacas y cafetales',24,15000,'Naranjo','2021-04-20','2021-04-20',5);
+*/
 select * from tours;
+select * from users;
 CREATE TABLE IF NOT EXISTS `toursBD`.`qualifications` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_email` VARCHAR(16) NOT NULL,
@@ -55,3 +57,7 @@ CREATE TABLE IF NOT EXISTS `toursBD`.`qualifications` (
   ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+INSERT INTO `toursBD`.`qualifications`(`user_email`,`tour_id`,`description`,`qualification`) VALUES ('user@gmail.com',3,'malo',1);
+
+
+SELECT * from qualifications;

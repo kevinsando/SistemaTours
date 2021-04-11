@@ -7,7 +7,6 @@
 package DAL;
 
 import BLL.ToursBLL;
-import DAL.IMECS.TOURS_IMEC;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.Date;
@@ -16,6 +15,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,7 +29,7 @@ public class ToursDAL {
         db = new RelDatabase();
     }
     
-    public List<Tour> allTours() throws Exception {
+    public List<Tour> allTours(){
         List<Tour> result = new ArrayList<>();
         try {
             String sql = " select * from tours;";
@@ -38,6 +39,8 @@ public class ToursDAL {
             }
         } catch (SQLException ex) {
             System.out.println(ex);
+        } catch (Exception ex) {
+            Logger.getLogger(ToursDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
     }

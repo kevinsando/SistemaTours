@@ -25,9 +25,7 @@ public class tours {
     }
 
     @GET
-    @Path("disponibles")
     @Produces(MediaType.APPLICATION_JSON)
-
     public List<Tour> getMasVendidos() {
         try {
             System.out.println("Mostrando tours");
